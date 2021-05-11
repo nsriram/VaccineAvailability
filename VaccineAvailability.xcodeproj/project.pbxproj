@@ -7,13 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F92D77F5DED7AFD0A62C415 /* Pods_VaccineAvailability.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9115E56DE47464F5EAD09FA /* Pods_VaccineAvailability.framework */; };
 		80F58265264B0FC200D000C8 /* VaccineAvailabilityApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F58264264B0FC200D000C8 /* VaccineAvailabilityApp.swift */; };
 		80F58267264B0FC200D000C8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F58266264B0FC200D000C8 /* ContentView.swift */; };
 		80F58269264B0FC300D000C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80F58268264B0FC300D000C8 /* Assets.xcassets */; };
 		80F5826C264B0FC300D000C8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80F5826B264B0FC300D000C8 /* Preview Assets.xcassets */; };
+		80F58275264B106700D000C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F58274264B106700D000C8 /* AppDelegate.swift */; };
+		80F58278264B1B9400D000C8 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 80F58277264B1B9400D000C8 /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		28340449DC03347C3F37A168 /* Pods-VaccineAvailability.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VaccineAvailability.release.xcconfig"; path = "Target Support Files/Pods-VaccineAvailability/Pods-VaccineAvailability.release.xcconfig"; sourceTree = "<group>"; };
 		80F58261264B0FC200D000C8 /* VaccineAvailability.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VaccineAvailability.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80F58264264B0FC200D000C8 /* VaccineAvailabilityApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaccineAvailabilityApp.swift; sourceTree = "<group>"; };
 		80F58266264B0FC200D000C8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -21,6 +25,10 @@
 		80F5826B264B0FC300D000C8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		80F5826D264B0FC300D000C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		80F5826E264B0FC300D000C8 /* VaccineAvailability.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VaccineAvailability.entitlements; sourceTree = "<group>"; };
+		80F58274264B106700D000C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		80F58277264B1B9400D000C8 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		9815D810140E129DFE7EAEBD /* Pods-VaccineAvailability.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VaccineAvailability.debug.xcconfig"; path = "Target Support Files/Pods-VaccineAvailability/Pods-VaccineAvailability.debug.xcconfig"; sourceTree = "<group>"; };
+		F9115E56DE47464F5EAD09FA /* Pods_VaccineAvailability.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VaccineAvailability.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -28,17 +36,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F92D77F5DED7AFD0A62C415 /* Pods_VaccineAvailability.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A6E657C56BC64DF5400B1B2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F9115E56DE47464F5EAD09FA /* Pods_VaccineAvailability.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		80F58258264B0FC200D000C8 = {
 			isa = PBXGroup;
 			children = (
+				80F58277264B1B9400D000C8 /* .gitignore */,
 				80F58263264B0FC200D000C8 /* VaccineAvailability */,
 				80F58262264B0FC200D000C8 /* Products */,
+				97D9005EEAD63A49691B3584 /* Pods */,
+				1A6E657C56BC64DF5400B1B2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -53,8 +73,9 @@
 		80F58263264B0FC200D000C8 /* VaccineAvailability */ = {
 			isa = PBXGroup;
 			children = (
-				80F58264264B0FC200D000C8 /* VaccineAvailabilityApp.swift */,
+				80F58274264B106700D000C8 /* AppDelegate.swift */,
 				80F58266264B0FC200D000C8 /* ContentView.swift */,
+				80F58264264B0FC200D000C8 /* VaccineAvailabilityApp.swift */,
 				80F58268264B0FC300D000C8 /* Assets.xcassets */,
 				80F5826D264B0FC300D000C8 /* Info.plist */,
 				80F5826E264B0FC300D000C8 /* VaccineAvailability.entitlements */,
@@ -71,6 +92,15 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		97D9005EEAD63A49691B3584 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9815D810140E129DFE7EAEBD /* Pods-VaccineAvailability.debug.xcconfig */,
+				28340449DC03347C3F37A168 /* Pods-VaccineAvailability.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -78,9 +108,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 80F58271264B0FC300D000C8 /* Build configuration list for PBXNativeTarget "VaccineAvailability" */;
 			buildPhases = (
+				B0B0AB718C55881D76F24565 /* [CP] Check Pods Manifest.lock */,
 				80F5825D264B0FC200D000C8 /* Sources */,
 				80F5825E264B0FC200D000C8 /* Frameworks */,
 				80F5825F264B0FC200D000C8 /* Resources */,
+				4A6DC0E3B07B35C748CB416A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -129,17 +161,66 @@
 			buildActionMask = 2147483647;
 			files = (
 				80F5826C264B0FC300D000C8 /* Preview Assets.xcassets in Resources */,
+				80F58278264B1B9400D000C8 /* .gitignore in Resources */,
 				80F58269264B0FC300D000C8 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4A6DC0E3B07B35C748CB416A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VaccineAvailability/Pods-VaccineAvailability-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VaccineAvailability/Pods-VaccineAvailability-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B0B0AB718C55881D76F24565 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VaccineAvailability-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		80F5825D264B0FC200D000C8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80F58275264B106700D000C8 /* AppDelegate.swift in Sources */,
 				80F58267264B0FC200D000C8 /* ContentView.swift in Sources */,
 				80F58265264B0FC200D000C8 /* VaccineAvailabilityApp.swift in Sources */,
 			);
@@ -265,10 +346,12 @@
 		};
 		80F58272264B0FC300D000C8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9815D810140E129DFE7EAEBD /* Pods-VaccineAvailability.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = VaccineAvailability/VaccineAvailability.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"VaccineAvailability/Preview Content\"";
@@ -287,10 +370,12 @@
 		};
 		80F58273264B0FC300D000C8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28340449DC03347C3F37A168 /* Pods-VaccineAvailability.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = VaccineAvailability/VaccineAvailability.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"VaccineAvailability/Preview Content\"";

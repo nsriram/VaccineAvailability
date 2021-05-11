@@ -1,0 +1,16 @@
+.DS_Store
+Thumbs.db
+
+Pods/
+Podfile.lock
+
+build/
+VaccineAvailability.xcodeproj/project.xcworkspace/xcuserdata/
+VaccineAvailability.xcodeproj/xcuserdata/
+
+VaccineAvailability.xcworkspace/project.xcworkspace/xcuserdata/
+VaccineAvailability.xcworkspace/xcuserdata/
+
+.idea
+VaccineAvailability.xcodeproj/xcshareddata
+
