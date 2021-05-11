@@ -1,5 +1,6 @@
 import Cocoa
 import SwiftUI
+import UserNotifications
 import Alamofire
 import SwiftyJSON
 
@@ -9,7 +10,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   let cowinAPIServer:String = "https://cdn-api.co-vin.in"
   let pincodeAPIURI:String = "/api/v2/appointment/sessions/public/findByPin"
   
+  let center = UNUserNotificationCenter.current()
+
   func applicationDidFinishLaunching(_ aNotification: Notification) {
+    center.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
+        if granted {
+            print("Yay!")
+        } else {
+            print("D'oh")
+        }
+      if error != nil{
+        print(error ?? "hello")
+      }
+    }
+
     self.statusItem = NSStatusBar.system.statusItem(withLength: CGFloat(NSStatusItem.variableLength))
     if let statusButton = statusItem.button {
       statusButton.target = self
@@ -45,7 +59,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if(!sessions.isEmpty){
           let firstSession:JSON = sessions[1]
           title = firstSession["name"].stringValue
+          let stateName = firstSession["state_name"].stringValue
+          let districtName = firstSession["district_name"].stringValue
           print(title)
+          let content = UNMutableNotificationContent()
+          content.title = title
+          content.body = "\(districtName),\(stateName)"
+          let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 2, repeats: false)
+          let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+          self.center.add(request)
         }
         button?.title = title
       case .failure(let error):
@@ -53,7 +75,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         button?.title = title
       }
     }
-    button?.title = dateFormatter.string(from: Date())
+//    button?.title = dateFormatter.string(from: Date())
   }
   
   @objc func exitMenu(sender: NSStatusBarButton) {
