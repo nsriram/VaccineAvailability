@@ -1,6 +1,7 @@
 import Cocoa
 import SwiftUI
 import Alamofire
+import SwiftyJSON
 
 class AppDelegate: NSObject, NSApplicationDelegate {
   var statusItem: NSStatusItem!
@@ -35,9 +36,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     dateFormatter.dateFormat = "dd-MM-YYYY"
     let today:String = dateFormatter.string(from: Date())
     let requestURL = "\(cowinAPIServer)\(pincodeAPIURI)?pincode=600062&date=\(today)"
-    NSLog(requestURL)
+    var title:String = "No Sessions"
     AF.request(requestURL, headers: headers).responseJSON { response in
-      debugPrint(response)
+      switch response.result {
+      case .success(let value):
+        let json = JSON(value)
+        let sessions: JSON = json["sessions"]
+        if(!sessions.isEmpty){
+          let firstSession:JSON = sessions[1]
+          title = firstSession["name"].stringValue
+          print(title)
+        }
+        button?.title = title
+      case .failure(let error):
+        print(error)
+        button?.title = title
+      }
     }
     button?.title = dateFormatter.string(from: Date())
   }
