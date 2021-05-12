@@ -14,6 +14,7 @@
 		80F5826C264B0FC300D000C8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80F5826B264B0FC300D000C8 /* Preview Assets.xcassets */; };
 		80F58275264B106700D000C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F58274264B106700D000C8 /* AppDelegate.swift */; };
 		80F58278264B1B9400D000C8 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 80F58277264B1B9400D000C8 /* .gitignore */; };
+		80FA9FC1264C701B0016B58C /* UserPreferenceReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FA9FC0264C701B0016B58C /* UserPreferenceReader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		80F5826E264B0FC300D000C8 /* VaccineAvailability.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VaccineAvailability.entitlements; sourceTree = "<group>"; };
 		80F58274264B106700D000C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		80F58277264B1B9400D000C8 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		80FA9FC0264C701B0016B58C /* UserPreferenceReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferenceReader.swift; sourceTree = "<group>"; };
 		9815D810140E129DFE7EAEBD /* Pods-VaccineAvailability.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VaccineAvailability.debug.xcconfig"; path = "Target Support Files/Pods-VaccineAvailability/Pods-VaccineAvailability.debug.xcconfig"; sourceTree = "<group>"; };
 		F9115E56DE47464F5EAD09FA /* Pods_VaccineAvailability.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VaccineAvailability.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -75,6 +77,7 @@
 			children = (
 				80F58274264B106700D000C8 /* AppDelegate.swift */,
 				80F58266264B0FC200D000C8 /* ContentView.swift */,
+				80FA9FC0264C701B0016B58C /* UserPreferenceReader.swift */,
 				80F58264264B0FC200D000C8 /* VaccineAvailabilityApp.swift */,
 				80F58268264B0FC300D000C8 /* Assets.xcassets */,
 				80F5826D264B0FC300D000C8 /* Info.plist */,
@@ -224,6 +227,7 @@
 			files = (
 				80F58275264B106700D000C8 /* AppDelegate.swift in Sources */,
 				80F58267264B0FC200D000C8 /* ContentView.swift in Sources */,
+				80FA9FC1264C701B0016B58C /* UserPreferenceReader.swift in Sources */,
 				80F58265264B0FC200D000C8 /* VaccineAvailabilityApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

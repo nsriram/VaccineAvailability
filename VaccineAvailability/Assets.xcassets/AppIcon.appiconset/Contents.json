@@ -1,11 +1,13 @@
 {
   "images" : [
     {
+      "filename" : "outline_local_hospital_white_24dp-1.png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "16x16"
     },
     {
+      "filename" : "outline_local_hospital_white_24dp.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "16x16"
