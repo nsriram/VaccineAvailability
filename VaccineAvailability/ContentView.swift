@@ -3,20 +3,15 @@ import Cocoa
 import os.log
 import SwiftyJSON
 
-//extension ContentView  {
-//  init(pincode1: String, pincode2 : String) {
-//    self.pincode1 = pincode1
-//    self.pincode2 = pincode2
-//  }
-//}
-
 struct ContentView: View {
   @State private var pincode1 = ""
   @State private var pincode2 = ""
+  @State private var popover:NSPopover!
   
-  init(pincode1: String, pincode2 : String) {
+  init(pincode1: String, pincode2 : String, popover:NSPopover) {
     _pincode1 = State(initialValue: pincode1)
     _pincode2 = State(initialValue: pincode2)
+    _popover = State(initialValue: popover)
   }
 
   func savePreferences(){
@@ -25,12 +20,17 @@ struct ContentView: View {
     print(preferenceJsonString)
     let userPreferenceReader = UserPreferenceReader()
     userPreferenceReader.write(fileContent: preferenceJsonString)
+    self.popover.performClose(self)
   }
   
   func exitApp(){
     NSApplication.shared.terminate(self)
   }
   
+  func goToChennaiCovid19(){
+    NSWorkspace.shared.open(URL(string: "https://chennai-zones.herokuapp.com")!)
+  }
+
   struct GradientButtonStyle: ButtonStyle {
     func makeBody(configuration: Self.Configuration) -> some View {
       configuration.label
@@ -87,6 +87,17 @@ struct ContentView: View {
       .padding(EdgeInsets(top: 5, leading:0, bottom: 5, trailing: 0))
       
       Divider()
+      Button(action: goToChennaiCovid19) {
+        HStack{
+          Text("Chennai Covid19 Tracker")
+            .font(.title3)
+        }
+      }
+      .buttonStyle(GradientButtonStyle2())
+      .padding(EdgeInsets(top: 0, leading:0, bottom: 5, trailing: 0))
+      
+
+      Divider()
       Button(action: exitApp) {
         HStack{
           Text("Exit Application")
@@ -102,6 +113,7 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
-    ContentView(pincode1: "600061", pincode2: "600096")
+    let popover = NSPopover()
+    ContentView(pincode1: "600061", pincode2: "600096", popover: popover)
   }
 }

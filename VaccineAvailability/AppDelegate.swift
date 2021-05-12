@@ -29,6 +29,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   }
   
   func applicationDidFinishLaunching(_ aNotification: Notification) {
+    let popover = NSPopover()
+    popover.contentSize = NSSize(width: 200, height: 400)
+    popover.behavior = .transient
+    self.popover = popover
+
     center.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
       if granted {
         print("Access Granted")
@@ -39,14 +44,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     self.statusItem = NSStatusBar.system.statusItem(withLength: CGFloat(NSStatusItem.squareLength))
     
     loadPreferences();
-    let contentView = ContentView(pincode1: self.pincode1, pincode2: self.pincode2)
-
-    let popover = NSPopover()
-    popover.contentSize = NSSize(width: 200, height: 400)
-    popover.behavior = .transient
-    popover.contentViewController = NSHostingController(rootView: contentView)
-    self.popover = popover
-    
+    let contentView = ContentView(pincode1: self.pincode1,
+                                  pincode2: self.pincode2,
+                                  popover : self.popover)
+    self.popover.contentViewController = NSHostingController(rootView: contentView)
+  
     self.statusItem.button?.image = NSImage(named: "HospitalAvailability")
     self.statusItem.button?.action = #selector(togglePopover(_:))
     
@@ -81,11 +83,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let sessions: JSON = json["sessions"]
         if(!sessions.isEmpty){
           //First session parsing
-          let firstSession:JSON = sessions[1]
+          let firstSession:JSON = sessions[0]
           title = firstSession["name"].stringValue
           let stateName = firstSession["state_name"].stringValue
           let districtName = firstSession["district_name"].stringValue
-          print(title)
           
           //Notification
           let content = UNMutableNotificationContent()
