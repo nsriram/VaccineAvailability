@@ -6,18 +6,18 @@ import SwiftyJSON
 struct ContentView: View {
   @State private var pincode1 = ""
   @State private var pincode2 = ""
+  @State private var lessThan45 = false
   @State private var popover:NSPopover!
   
-  init(pincode1: String, pincode2 : String, popover:NSPopover) {
+  init(pincode1: String, pincode2 : String, popover:NSPopover, lessThan45:Bool) {
     _pincode1 = State(initialValue: pincode1)
     _pincode2 = State(initialValue: pincode2)
     _popover = State(initialValue: popover)
+    _lessThan45 = State(initialValue: lessThan45)
   }
 
   func savePreferences(){
-    let preferenceJsonString = "{\"pincodes\" : [\(pincode1), \(pincode2)]}"
-    print("saving")
-    print(preferenceJsonString)
+    let preferenceJsonString = "{\"pincodes\" : [\(pincode1), \(pincode2)], \"lessThan45\" : \(lessThan45)}"
     let userPreferenceReader = UserPreferenceReader()
     userPreferenceReader.write(fileContent: preferenceJsonString)
     self.popover.performClose(self)
@@ -68,6 +68,11 @@ struct ContentView: View {
       .padding(EdgeInsets(top: 10, leading:20, bottom: 10, trailing: 20))
       .background(Color(red: 0.18, green: 0.18, blue: 0.18))
       
+      HStack{
+        Toggle(" Include 18-44 Age Group ? ", isOn: $lessThan45)
+        .padding(EdgeInsets(top: 10, leading:10, bottom: 0, trailing: 10))
+      }
+      
       TextField("Pincode 1",text: $pincode1)
         .textFieldStyle(RoundedBorderTextFieldStyle())
         .padding(EdgeInsets(top: 10, leading:10, bottom: 0, trailing: 10))
@@ -100,7 +105,7 @@ struct ContentView: View {
       Divider()
       Button(action: exitApp) {
         HStack{
-          Text("Exit Application")
+          Text("Exit Vaccine Availability")
             .font(.title3)
         }
       }
@@ -108,12 +113,5 @@ struct ContentView: View {
       .padding(EdgeInsets(top: 0, leading:0, bottom: 5, trailing: 0))
       
     }.background(Color(red: 0.15, green: 0.15, blue: 0.15))
-  }
-}
-
-struct ContentView_Previews: PreviewProvider {
-  static var previews: some View {
-    let popover = NSPopover()
-    ContentView(pincode1: "600061", pincode2: "600096", popover: popover)
   }
 }

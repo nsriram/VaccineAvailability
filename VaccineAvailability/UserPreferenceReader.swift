@@ -3,7 +3,7 @@ import os.log
 
 class UserPreferenceReader {
   let filename:URL
-  let defaultPreference:String = "{\"pincodes\" : [\"600061\", \"600096\"]}"
+  let defaultPreference:String = "{\"pincodes\" : [\"600061\", \"600096\"], \"lessThan45\" : false}"
 
   init(){
     let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
