@@ -14,6 +14,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   
   var pincode1:String = ""
   var pincode2:String = ""
+  var pincode3:String = ""
+
   var lessThan45:Bool = false
   
   let cowinAPIServer:String = "https://cdn-api.co-vin.in"
@@ -23,9 +25,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let userPreferenceReader = UserPreferenceReader()
     let config = userPreferenceReader.read()
     let json = JSON(config.data(using: .utf8, allowLossyConversion: true)!)
+
     let pincodes: JSON = json["pincodes"]
     self.pincode1 = "\(pincodes[0].intValue)"
     self.pincode2 = "\(pincodes[1].intValue)"
+    self.pincode3 = "\(pincodes[2].intValue)"
+
     let lessThan45 = json["lessThan45"]
     self.lessThan45 = lessThan45.boolValue
   }
@@ -50,6 +55,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     self.statusItem = NSStatusBar.system.statusItem(withLength: CGFloat(NSStatusItem.squareLength))
     let contentView = ContentView(pincode1: self.pincode1,
                                   pincode2: self.pincode2,
+                                  pincode3: self.pincode3,
                                   popover : self.popover,
                                   lessThan45: self.lessThan45)
     self.popover.contentViewController = NSHostingController(rootView: contentView)
@@ -89,7 +95,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let today:String = dateFormatter.string(from: Date())
     let ageLimit = self.lessThan45 ? 18 : 45
 
-    for pincode:String in [self.pincode1, self.pincode2] {
+    for pincode:String in [self.pincode1, self.pincode2, self.pincode3] {
       let requestURL = "\(cowinAPIServer)\(pincodeAPIURI)?pincode=\(pincode)&date=\(today)"
       AF.request(requestURL, headers: headers).responseJSON { response in
         switch response.result {

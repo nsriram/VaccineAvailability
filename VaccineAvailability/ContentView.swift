@@ -6,18 +6,20 @@ import SwiftyJSON
 struct ContentView: View {
   @State private var pincode1 = ""
   @State private var pincode2 = ""
+  @State private var pincode3 = ""
   @State private var lessThan45 = false
   @State private var popover:NSPopover!
   
-  init(pincode1: String, pincode2 : String, popover:NSPopover, lessThan45:Bool) {
+  init(pincode1: String, pincode2 : String, pincode3 : String, popover:NSPopover, lessThan45:Bool) {
     _pincode1 = State(initialValue: pincode1)
     _pincode2 = State(initialValue: pincode2)
+    _pincode3 = State(initialValue: pincode3)
     _popover = State(initialValue: popover)
     _lessThan45 = State(initialValue: lessThan45)
   }
 
   func savePreferences(){
-    let preferenceJsonString = "{\"pincodes\" : [\(pincode1), \(pincode2)], \"lessThan45\" : \(lessThan45)}"
+    let preferenceJsonString = "{\"pincodes\" : [\(pincode1), \(pincode2), \(pincode3)], \"lessThan45\" : \(lessThan45)}"
     let userPreferenceReader = UserPreferenceReader()
     userPreferenceReader.write(fileContent: preferenceJsonString)
     self.popover.performClose(self)
@@ -27,10 +29,6 @@ struct ContentView: View {
     NSApplication.shared.terminate(self)
   }
   
-  func goToChennaiCovid19(){
-    NSWorkspace.shared.open(URL(string: "https://chennai-zones.herokuapp.com")!)
-  }
-
   struct GradientButtonStyle: ButtonStyle {
     func makeBody(configuration: Self.Configuration) -> some View {
       configuration.label
@@ -62,8 +60,7 @@ struct ContentView: View {
                   Text("Vaccine Availability")
                   .frame(width: 200)
                   .font(.title3)
-        ){
-        }
+        ){}
       }
       .padding(EdgeInsets(top: 10, leading:20, bottom: 10, trailing: 20))
       .background(Color(red: 0.18, green: 0.18, blue: 0.18))
@@ -72,45 +69,53 @@ struct ContentView: View {
         Toggle(" Include 18-44 Age Group ? ", isOn: $lessThan45)
         .padding(EdgeInsets(top: 10, leading:10, bottom: 0, trailing: 10))
       }
-      
-      TextField("Pincode 1",text: $pincode1)
-        .textFieldStyle(RoundedBorderTextFieldStyle())
-        .padding(EdgeInsets(top: 10, leading:10, bottom: 0, trailing: 10))
-      
-      
-      TextField("Pincode 2",text: $pincode2)
-        .textFieldStyle(RoundedBorderTextFieldStyle())
-        .padding(EdgeInsets(top: 10, leading:10, bottom: 0, trailing: 10))
-      
-      Button(action: savePreferences) {
-        HStack{
-          Text("Save Preferences")
-            .font(.title3)
-        }
-      }
-      .buttonStyle(GradientButtonStyle())
-      .padding(EdgeInsets(top: 5, leading:0, bottom: 5, trailing: 0))
-      
-      Divider()
-      Button(action: goToChennaiCovid19) {
-        HStack{
-          Text("Chennai Covid19 Tracker")
-            .font(.title3)
-        }
-      }
-      .buttonStyle(GradientButtonStyle2())
-      .padding(EdgeInsets(top: 0, leading:0, bottom: 5, trailing: 0))
-      
 
       Divider()
-      Button(action: exitApp) {
-        HStack{
-          Text("Exit Vaccine Availability")
-            .font(.title3)
+
+      HStack{
+        Image("Location")
+          .resizable()
+          .scaledToFit()
+          .frame(width: 16.0, height: 16.0, alignment: .leading)
+        Text("Pincode(s)")
+          .font(.title2)
+          .frame(maxWidth: .infinity, alignment: .leading)
+          .padding(EdgeInsets(top: 2, leading:0, bottom: 0, trailing: 10))
+      }.padding(EdgeInsets(top: 0, leading:10, bottom: 0, trailing: 10))
+      
+      VStack{
+        TextField("Pincode 1",text: $pincode1)
+          .textFieldStyle(RoundedBorderTextFieldStyle())
+          .padding(EdgeInsets(top: 10, leading:10, bottom: 0, trailing: 10))
+        
+        
+        TextField("Pincode 2",text: $pincode2)
+          .textFieldStyle(RoundedBorderTextFieldStyle())
+          .padding(EdgeInsets(top: 10, leading:10, bottom: 0, trailing: 10))
+        
+        TextField("Pincode 3",text: $pincode3)
+          .textFieldStyle(RoundedBorderTextFieldStyle())
+          .padding(EdgeInsets(top: 10, leading:10, bottom: 0, trailing: 10))
+        
+        Button(action: savePreferences) {
+          HStack{
+            Text("Save Preferences")
+              .font(.title3)
+          }
         }
+        .buttonStyle(GradientButtonStyle())
+        .padding(EdgeInsets(top: 5, leading:0, bottom: 5, trailing: 0))
+        
+        Divider()
+        Button(action: exitApp) {
+          HStack{
+            Text("Exit App")
+              .font(.title2)
+          }
+        }
+        .buttonStyle(GradientButtonStyle2())
+        .padding(EdgeInsets(top: 0, leading:0, bottom: 5, trailing: 0))
       }
-      .buttonStyle(GradientButtonStyle2())
-      .padding(EdgeInsets(top: 0, leading:0, bottom: 5, trailing: 0))
       
     }.background(Color(red: 0.15, green: 0.15, blue: 0.15))
   }

@@ -29,7 +29,7 @@ struct MainAppView: View {
       }.padding(EdgeInsets(top: 0, leading:10, bottom: 0, trailing: 10))
       Divider()
       VStack (alignment: .leading){
-        Text("Configure using 'menu bar icon' and receive availability notifications.")
+        Text("Configure using 'menu bar icon' and receive '7 Day' availability notifications.")
           .font(.title2)
           .frame(maxWidth: .infinity, alignment: .leading)
           .padding(EdgeInsets(top: 5, leading:10, bottom: 0, trailing: 10))
@@ -49,7 +49,7 @@ struct MainAppView: View {
             .resizable()
             .scaledToFit()
             .frame(width: 24.0, height: 24.0, alignment: .leading)
-          Text("You will receive notifications if there are slots available for the pincode and age limit configured.")
+          Text("You will receive notifications on '7 Day' availability, if there are slots available for the pincode and age limit configured.")
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(EdgeInsets(top: 2, leading:10, bottom: 0, trailing: 10))
         }.padding(EdgeInsets(top: 0, leading:10, bottom: 0, trailing: 10))
