@@ -1,27 +1,15 @@
 import Foundation
 class Session {
-  var hospitalName:String
-  var address: String
-  var stateName: String
-  var districtName: String
-  var pincode: Int
+  var date:String
   var vaccine:String
   var availableCapacity: Int
   var ageLimit:Int
   
-  init(hospitalName:String,
-       address:String,
-       stateName: String,
-       districtName: String,
-       pincode: Int,
+  init(date:String,
        vaccine:String,
        availableCapacity: Int,
        ageLimit:Int){
-    self.hospitalName = hospitalName
-    self.address = address
-    self.stateName = stateName
-    self.districtName = districtName
-    self.pincode = pincode
+    self.date = date
     self.vaccine = vaccine
     self.availableCapacity = availableCapacity
     self.ageLimit = ageLimit

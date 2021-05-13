@@ -17,7 +17,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   var lessThan45:Bool = false
   
   let cowinAPIServer:String = "https://cdn-api.co-vin.in"
-  let pincodeAPIURI:String = "/api/v2/appointment/sessions/public/findByPin"
+  let pincodeAPIURI:String = "/api/v2/appointment/sessions/public/calendarByPin"
   
   func loadPreferences() {
     let userPreferenceReader = UserPreferenceReader()
@@ -28,7 +28,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     self.pincode2 = "\(pincodes[1].intValue)"
     let lessThan45 = json["lessThan45"]
     self.lessThan45 = lessThan45.boolValue
-    print("\(self.pincode1), \(self.pincode2), \(self.lessThan45)")
   }
   
   func applicationDidFinishLaunching(_ aNotification: Notification) {
@@ -42,9 +41,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         print("Access Not Granted")
       }
     }
-    center.getNotificationSettings { settings in
-      print(settings)
-    }
 
     let popover = NSPopover()
     popover.contentSize = NSSize(width: 200, height: 400)
@@ -52,7 +48,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     self.popover = popover
     
     self.statusItem = NSStatusBar.system.statusItem(withLength: CGFloat(NSStatusItem.squareLength))
-
     let contentView = ContentView(pincode1: self.pincode1,
                                   pincode2: self.pincode2,
                                   popover : self.popover,
@@ -69,12 +64,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                                  repeats: true)
   }
   
-  func addNotification(session:Session){
+  func addNotification(hospital:Hospital, ageLimit:Int){
     let content = UNMutableNotificationContent()
-    content.title = session.hospitalName
-    content.subtitle = session.address
-    content.body = "\(session.districtName),\(session.stateName)"
-    content.badge = 3
+    content.title = "\(hospital.hospitalName), \(hospital.districtName)"
+    content.subtitle = hospital.daysAvailable(ageLimit: ageLimit)
+    content.body = hospital.formattedDate()
 
     let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
     let request = UNNotificationRequest(identifier: UUID().uuidString,
@@ -94,18 +88,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     dateFormatter.dateFormat = "dd-MM-YYYY"
     let today:String = dateFormatter.string(from: Date())
     let ageLimit = self.lessThan45 ? 18 : 45
-    print("ageLimit : \(ageLimit)")
+
     for pincode:String in [self.pincode1, self.pincode2] {
-      print("fetching for pincode \(pincode)")
       let requestURL = "\(cowinAPIServer)\(pincodeAPIURI)?pincode=\(pincode)&date=\(today)"
       AF.request(requestURL, headers: headers).responseJSON { response in
         switch response.result {
         case .success(let value):
-          let sessions:[Session] = self.sessionsParser.parse(sessionsResponse: value)
-          for session in sessions {
-            if(session.isAvailableFor(ageLimit: ageLimit)){
-              self.addNotification(session:session)
-            }
+          let hospitals:[Hospital] = self.sessionsParser.parse(calendarResponse: value)
+          for hospital in hospitals {
+              if(hospital.isAvailableFor(ageLimit: ageLimit)){
+                self.addNotification(hospital:hospital, ageLimit: ageLimit)
+              }
           }
         case .failure(let error):
           print(error)
