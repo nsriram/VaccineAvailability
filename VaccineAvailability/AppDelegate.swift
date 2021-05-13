@@ -12,9 +12,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   
   let center = UNUserNotificationCenter.current()
   
-  var pincode1:String = ""
-  var pincode2:String = ""
-  var pincode3:String = ""
+  var pincode1:Int = 600001
+  var pincode2:Int = 400001
+  var pincode3:Int = 110001
 
   var lessThan45:Bool = false
   
@@ -27,9 +27,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let json = JSON(config.data(using: .utf8, allowLossyConversion: true)!)
 
     let pincodes: JSON = json["pincodes"]
-    self.pincode1 = "\(pincodes[0].intValue)"
-    self.pincode2 = "\(pincodes[1].intValue)"
-    self.pincode3 = "\(pincodes[2].intValue)"
+    self.pincode1 = pincodes[0].intValue
+    self.pincode2 = pincodes[1].intValue
+    self.pincode3 = pincodes[2].intValue
 
     let lessThan45 = json["lessThan45"]
     self.lessThan45 = lessThan45.boolValue
@@ -95,12 +95,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let today:String = dateFormatter.string(from: Date())
     let ageLimit = self.lessThan45 ? 18 : 45
 
-    for pincode:String in [self.pincode1, self.pincode2, self.pincode3] {
+    for pincode:Int in [self.pincode1, self.pincode2, self.pincode3] {
       let requestURL = "\(cowinAPIServer)\(pincodeAPIURI)?pincode=\(pincode)&date=\(today)"
       AF.request(requestURL, headers: headers).responseJSON { response in
         switch response.result {
         case .success(let value):
           let hospitals:[Hospital] = self.sessionsParser.parse(calendarResponse: value)
+          print("\(hospitals.count)")
           for hospital in hospitals {
               if(hospital.isAvailableFor(ageLimit: ageLimit)){
                 self.addNotification(hospital:hospital, ageLimit: ageLimit)
