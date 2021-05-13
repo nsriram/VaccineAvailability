@@ -56,7 +56,7 @@ struct ContentView: View {
         TextField("Pincode 1 (6 digits)",text: $pincode1,
                   onCommit: {
                     if(!isPincode(pincode: pincode1)){
-                      self.pincode1 = ""
+                      self.pincode1 = "0"
                     }
                   })
           .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -65,7 +65,7 @@ struct ContentView: View {
         TextField("Pincode 2 (6 digits)",text: $pincode2,
                   onCommit: {
                     if(!isPincode(pincode: pincode2)){
-                      self.pincode2 = ""
+                      self.pincode2 = "0"
                     }
                   })
           .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -74,7 +74,7 @@ struct ContentView: View {
         TextField("Pincode 3 (6 digits)",text: $pincode3,
                   onCommit: {
                     if(!isPincode(pincode: pincode3)){
-                      self.pincode3 = ""
+                      self.pincode3 = "0"
                     }
                   })
           .textFieldStyle(RoundedBorderTextFieldStyle())

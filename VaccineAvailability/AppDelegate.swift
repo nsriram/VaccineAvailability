@@ -64,7 +64,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     self.statusItem.button?.action = #selector(togglePopover(_:))
     
     self.updateClock()
-    timer = Timer.scheduledTimer(timeInterval: 30,
+    timer = Timer.scheduledTimer(timeInterval: 15,
                                  target: self,
                                  selector: #selector(updateClock),
                                  userInfo: nil,
