@@ -3,6 +3,7 @@ import SwiftUI
 import UserNotifications
 import Alamofire
 import SwiftyJSON
+import os.log
 
 class AppDelegate: NSObject, NSApplicationDelegate {
   var statusItem: NSStatusItem!
@@ -41,9 +42,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     center.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
       if granted {
-        print("Access Granted")
+        os_log("Access Granted")
       } else {
-        print("Access Not Granted")
+        os_log("Access Not Granted")
       }
     }
 
@@ -101,14 +102,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         switch response.result {
         case .success(let value):
           let hospitals:[Hospital] = self.sessionsParser.parse(calendarResponse: value)
-          print("\(hospitals.count)")
           for hospital in hospitals {
               if(hospital.isAvailableFor(ageLimit: ageLimit)){
                 self.addNotification(hospital:hospital, ageLimit: ageLimit)
               }
           }
         case .failure(let error):
-          print(error)
+          let errorDetails = "\(error)"
+          os_log("%@", errorDetails)
         }
       }
     }

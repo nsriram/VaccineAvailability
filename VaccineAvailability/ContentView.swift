@@ -62,11 +62,21 @@ struct ContentView: View {
           .textFieldStyle(RoundedBorderTextFieldStyle())
           .padding(EdgeInsets(top: 10, leading:10, bottom: 0, trailing: 10))
         
-        TextField("Pincode 2 (6 digits)",text: $pincode2)
+        TextField("Pincode 2 (6 digits)",text: $pincode2,
+                  onCommit: {
+                    if(!isPincode(pincode: pincode2)){
+                      self.pincode2 = ""
+                    }
+                  })
           .textFieldStyle(RoundedBorderTextFieldStyle())
           .padding(EdgeInsets(top: 10, leading:10, bottom: 0, trailing: 10))
         
-        TextField("Pincode 3 (6 digits)",text: $pincode3)
+        TextField("Pincode 3 (6 digits)",text: $pincode3,
+                  onCommit: {
+                    if(!isPincode(pincode: pincode3)){
+                      self.pincode3 = ""
+                    }
+                  })
           .textFieldStyle(RoundedBorderTextFieldStyle())
           .padding(EdgeInsets(top: 10, leading:10, bottom: 0, trailing: 10))
         

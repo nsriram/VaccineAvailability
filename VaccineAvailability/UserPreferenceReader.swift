@@ -23,7 +23,7 @@ class UserPreferenceReader {
   
   func read() -> String {
     if !FileManager.default.fileExists(atPath: self.filename.path) {
-      print("File does not exist")
+      os_log("File does not exist")
       write(fileContent: defaultPreference)
       return defaultPreference
     }
