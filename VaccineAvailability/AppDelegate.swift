@@ -64,7 +64,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     self.statusItem.button?.action = #selector(togglePopover(_:))
     
     self.updateClock()
-    timer = Timer.scheduledTimer(timeInterval: 15,
+    timer = Timer.scheduledTimer(timeInterval: 10,
                                  target: self,
                                  selector: #selector(updateClock),
                                  userInfo: nil,
@@ -74,10 +74,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   func addNotification(hospital:Hospital, ageLimit:Int){
     let content = UNMutableNotificationContent()
     content.title = "\(hospital.hospitalName), \(hospital.districtName)"
-    content.subtitle = hospital.daysAvailable(ageLimit: ageLimit)
-    content.body = hospital.formattedDate()
 
-    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+    let daysAvailabe:[String] = hospital.daysAvailable(ageLimit: ageLimit)
+    let subtitle = "\(daysAvailabe.count) day(s) available (Age \(ageLimit) and above)"
+    
+    content.subtitle = subtitle
+    content.body = daysAvailabe.joined(separator: ", ")
+
+    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
     let request = UNNotificationRequest(identifier: UUID().uuidString,
                                         content: content,
                                         trigger: trigger)

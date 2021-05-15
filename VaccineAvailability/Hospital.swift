@@ -33,11 +33,11 @@ class Hospital {
     return filteredSessions.count > 0
   }
   
-  func formattedDate() -> String {
-    return self.sessions.map ({$0.date}).joined(separator: ", ")
-  }
-
-  func daysAvailable(ageLimit: Int) -> String {
-    return "\(self.sessions.count) days available (Age \(ageLimit) and above)"
+  func daysAvailable(ageLimit: Int) -> [String] {
+    let daysWithAvailableSessions = self.sessions
+      .filter ({$0.isAvailableFor(ageLimit: ageLimit)})
+      .map({$0.date})
+    
+    return daysWithAvailableSessions
   }
 }
