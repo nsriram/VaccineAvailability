@@ -15,7 +15,7 @@ VaccinationAvailability app polls CoWin API every 15 seconds for 7-day availabil
 
 ## Download
 
-<a href="https://github.com/nsriram/VaccineAvailability/releases/download/v1.0.0/VaccineAvailability.app.zip">Download v1.0.0</a>
+<a href="https://github.com/nsriram/VaccineAvailability/releases/download/v1.0.1/VaccineAvailability.app.zip">Download v1.0.1</a>
 
 ## Setup
 * Download the `VaccineAvailability.app.zip`
