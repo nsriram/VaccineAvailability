@@ -4,15 +4,8 @@ VaccineAvailability is a vaccine tracker MacOS Big Sur Menu bar app to track vac
 across India by using pincodes and Age limit. The app uses 
 [Cowin Public V2 APIs](https://apisetu.gov.in/public/marketplace/api/cowin/cowin-public-v2)
 
-## Screens
-### Menubar Configuration
-<img src="menubar.png?raw=true"  alt="Menubar Configuration"/>
-
-### Notification
-<img src="notifications.jpg?raw=true"  alt="Notification"/>
-
-### Book on COWIN
-<img src="about.png?raw=true"  alt="Book on COWIN"/>
+## MacOS App Screens
+<img src="screenshot.jpg?raw=true"  alt="App Screens"/>
 
 ## Availability Notifications
 Key feature of the App is the notifications on MacOS Big Sur. You can leave it running on your Mac and 
