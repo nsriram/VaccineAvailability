@@ -18,6 +18,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   var pincode3:Int = 110001
 
   var lessThan45:Bool = false
+  var dosage1:Bool = true
+  var dosage2:Bool = false
+
   
   let cowinAPIServer:String = "https://cdn-api.co-vin.in"
   let pincodeAPIURI:String = "/api/v2/appointment/sessions/public/calendarByPin"
@@ -34,6 +37,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     let lessThan45 = json["lessThan45"]
     self.lessThan45 = lessThan45.boolValue
+
+    let dosage1 = json["dosage1"]
+    self.dosage1 = dosage1.boolValue
+
+    let dosage2 = json["dosage2"]
+    self.dosage2 = dosage2.boolValue
   }
   
   func applicationDidFinishLaunching(_ aNotification: Notification) {
@@ -58,7 +67,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                                   pincode2: self.pincode2,
                                   pincode3: self.pincode3,
                                   popover : self.popover,
-                                  lessThan45: self.lessThan45)
+                                  lessThan45: self.lessThan45,
+                                  dosage1: dosage1,
+                                  dosage2: dosage2)
     self.popover.contentViewController = NSHostingController(rootView: contentView)
     self.statusItem.button?.image = NSImage(named: "HospitalAvailability")
     self.statusItem.button?.action = #selector(togglePopover(_:))
@@ -71,11 +82,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                                  repeats: true)
   }
   
-  func addNotification(hospital:Hospital, ageLimit:Int){
+  func addNotification(hospital:Hospital, ageLimit:Int, dosage1: Bool, dosage2 : Bool){
     let content = UNMutableNotificationContent()
     content.title = "\(hospital.hospitalName), \(hospital.districtName)"
 
-    let daysAvailabe:[String] = hospital.daysAvailable(ageLimit: ageLimit)
+    let daysAvailabe:[String] = hospital.daysAvailable(ageLimit: ageLimit, dosage1: dosage1, dosage2: dosage2)
     let subtitle = "\(daysAvailabe.count) day(s) available (Age \(ageLimit) and above)"
     
     content.subtitle = subtitle
@@ -107,8 +118,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         case .success(let value):
           let hospitals:[Hospital] = self.sessionsParser.parse(calendarResponse: value)
           for hospital in hospitals {
-              if(hospital.isAvailableFor(ageLimit: ageLimit)){
-                self.addNotification(hospital:hospital, ageLimit: ageLimit)
+            if(hospital.isAvailableFor(ageLimit: ageLimit,
+                                       dosage1: self.dosage1,
+                                       dosage2: self.dosage2)){
+              self.addNotification(hospital:hospital,
+                                   ageLimit: ageLimit,
+                                   dosage1: self.dosage1,
+                                   dosage2: self.dosage2)
               }
           }
         case .failure(let error):

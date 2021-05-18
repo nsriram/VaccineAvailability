@@ -28,14 +28,14 @@ class Hospital {
     self.sessions = sessions
   }
   
-  func isAvailableFor(ageLimit: Int) -> Bool {
-    let filteredSessions = self.sessions.filter ({$0.isAvailableFor(ageLimit: ageLimit)})
+  func isAvailableFor(ageLimit: Int, dosage1: Bool, dosage2:Bool) -> Bool {
+    let filteredSessions = self.sessions.filter ({$0.isAvailableFor(ageLimit: ageLimit, dosage1: dosage1, dosage2: dosage2)})
     return filteredSessions.count > 0
   }
   
-  func daysAvailable(ageLimit: Int) -> [String] {
+  func daysAvailable(ageLimit: Int, dosage1: Bool, dosage2:Bool) -> [String] {
     let daysWithAvailableSessions = self.sessions
-      .filter ({$0.isAvailableFor(ageLimit: ageLimit)})
+      .filter ({$0.isAvailableFor(ageLimit: ageLimit, dosage1: dosage1, dosage2: dosage2)})
       .map({$0.date})
     
     return daysWithAvailableSessions

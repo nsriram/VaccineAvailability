@@ -25,10 +25,14 @@ class SessionsParser {
           let date = session["date"].stringValue
           let vaccine = session["vaccine"].stringValue
           let availableCapacity  = session["available_capacity"].intValue
+          let availableCapacityDose1  = session["available_capacity_dose1"].intValue
+          let availableCapacityDose2  = session["available_capacity_dose2"].intValue
           let ageLimit  = session["min_age_limit"].intValue
           let availableSession = Session(date:date,
                                          vaccine:vaccine,
                                          availableCapacity: availableCapacity,
+                                         availableCapacityDose1: availableCapacityDose1,
+                                         availableCapacityDose2: availableCapacityDose2,
                                          ageLimit:ageLimit)
           availableSessions.append(availableSession)
         }

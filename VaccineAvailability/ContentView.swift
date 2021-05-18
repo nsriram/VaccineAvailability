@@ -8,13 +8,17 @@ struct ContentView: View {
   @State private var pincode2 = ""
   @State private var pincode3 = ""
   @State private var lessThan45 = false
+  @State private var dosage1 = false
+  @State private var dosage2 = false
   @State private var popover:NSPopover!
   
-  init(pincode1: Int, pincode2 : Int, pincode3 : Int, popover:NSPopover, lessThan45:Bool) {
+  init(pincode1: Int, pincode2 : Int, pincode3 : Int, popover:NSPopover, lessThan45:Bool, dosage1:Bool, dosage2:Bool) {
     _pincode1 = State(initialValue: "\(pincode1)")
     _pincode2 = State(initialValue: "\(pincode2)")
     _pincode3 = State(initialValue: "\(pincode3)")
     _popover = State(initialValue: popover)
+    _dosage1 = State(initialValue: dosage1)
+    _dosage2 = State(initialValue: dosage2)
     _lessThan45 = State(initialValue: lessThan45)
   }
   
@@ -40,7 +44,21 @@ struct ContentView: View {
       }
       
       Divider()
-      
+
+      HStack{
+        HStack{
+          Toggle(" Dosage 1 ", isOn: $dosage1)
+            .padding(EdgeInsets(top: 10, leading:10, bottom: 0, trailing: 10))
+        }
+
+        HStack{
+          Toggle(" Dosage 2 ", isOn: $dosage2)
+            .padding(EdgeInsets(top: 10, leading:10, bottom: 0, trailing: 10))
+        }
+      }
+
+      Divider()
+
       HStack{
         Image("Location")
           .resizable()
@@ -104,7 +122,7 @@ struct ContentView: View {
   }
   
   func savePreferences(){
-    let preferenceJsonString = "{\"pincodes\" : [\(pincode1), \(pincode2), \(pincode3)], \"lessThan45\" : \(lessThan45)}"
+    let preferenceJsonString = "{\"pincodes\" : [\(pincode1), \(pincode2), \(pincode3)], \"lessThan45\" : \(lessThan45),\"dosage1\" : \(dosage1), \"dosage2\" : \(dosage2)}"
     let userPreferenceReader = UserPreferenceReader()
     userPreferenceReader.write(fileContent: preferenceJsonString)
     self.popover.performClose(self)
