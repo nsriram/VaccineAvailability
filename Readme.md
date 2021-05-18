@@ -24,6 +24,7 @@ VaccinationAvailability app polls CoWin API every 15 seconds for 7-day availabil
 * Allow the notifications request to receive notifications from the app  
 * Add 3 pincodes in India
 * Select 18-44 age group, if you are looking for it 
+* Select dosage 1 (or) dosage 2 (or) both 
 * Save the preferences
 * When the slot opens for the pincode, age group you have added, you will see a notification on your Mac. Clicking on
 the notification will open the main app and from there you can click cowin registration website.
