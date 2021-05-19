@@ -13,7 +13,6 @@
 		80624D65264D8FC700B034A5 /* build.sh in Resources */ = {isa = PBXBuildFile; fileRef = 80624D64264D8FC700B034A5 /* build.sh */; };
 		80624D67264D97DD00B034A5 /* CONTRIBUTING.md in Resources */ = {isa = PBXBuildFile; fileRef = 80624D66264D97DD00B034A5 /* CONTRIBUTING.md */; };
 		80624D69264D980F00B034A5 /* Readme.md in Resources */ = {isa = PBXBuildFile; fileRef = 80624D68264D980F00B034A5 /* Readme.md */; };
-		808B407A264DA01000DD0159 /* screenshot.png in Resources */ = {isa = PBXBuildFile; fileRef = 808B4079264DA01000DD0159 /* screenshot.png */; };
 		808E4D9C264D23B400C43244 /* SessionsParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808E4D9B264D23B400C43244 /* SessionsParser.swift */; };
 		808E4D9E264D244400C43244 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808E4D9D264D244400C43244 /* Session.swift */; };
 		808E4DA0264D38A100C43244 /* MainAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808E4D9F264D38A100C43244 /* MainAppView.swift */; };
@@ -33,7 +32,6 @@
 		80624D64264D8FC700B034A5 /* build.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = build.sh; sourceTree = "<group>"; };
 		80624D66264D97DD00B034A5 /* CONTRIBUTING.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CONTRIBUTING.md; sourceTree = "<group>"; };
 		80624D68264D980F00B034A5 /* Readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
-		808B4079264DA01000DD0159 /* screenshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenshot.png; sourceTree = "<group>"; };
 		808E4D9B264D23B400C43244 /* SessionsParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionsParser.swift; sourceTree = "<group>"; };
 		808E4D9D264D244400C43244 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		808E4D9F264D38A100C43244 /* MainAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppView.swift; sourceTree = "<group>"; };
@@ -81,7 +79,6 @@
 				80F58277264B1B9400D000C8 /* .gitignore */,
 				80624D66264D97DD00B034A5 /* CONTRIBUTING.md */,
 				80624D68264D980F00B034A5 /* Readme.md */,
-				808B4079264DA01000DD0159 /* screenshot.png */,
 				97D9005EEAD63A49691B3584 /* Pods */,
 				1A6E657C56BC64DF5400B1B2 /* Frameworks */,
 			);
@@ -197,7 +194,6 @@
 				80624D63264D8F3400B034A5 /* LICENSE in Resources */,
 				80F58269264B0FC300D000C8 /* Assets.xcassets in Resources */,
 				80624D65264D8FC700B034A5 /* build.sh in Resources */,
-				808B407A264DA01000DD0159 /* screenshot.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -39,10 +39,13 @@ struct ContentView: View {
       .background(Color(red: 0.18, green: 0.18, blue: 0.18))
       
       HStack{
-        Toggle(" Include 18-44 Age Group ? ", isOn: $lessThan45)
+        Toggle("18-44 years slots only ? ", isOn: $lessThan45)
           .padding(EdgeInsets(top: 10, leading:10, bottom: 0, trailing: 10))
       }
-      
+
+      Text("(leave unchecked for 45+ years only)")
+        .font(.footnote)
+
       Divider()
 
       HStack{
