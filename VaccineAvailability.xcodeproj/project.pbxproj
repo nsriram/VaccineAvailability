@@ -16,6 +16,7 @@
 		808E4D9C264D23B400C43244 /* SessionsParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808E4D9B264D23B400C43244 /* SessionsParser.swift */; };
 		808E4D9E264D244400C43244 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808E4D9D264D244400C43244 /* Session.swift */; };
 		808E4DA0264D38A100C43244 /* MainAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808E4D9F264D38A100C43244 /* MainAppView.swift */; };
+		8097F01126553B0600490B9A /* screenshot.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8097F01026553B0600490B9A /* screenshot.jpg */; };
 		80F58265264B0FC200D000C8 /* VaccineAvailabilityApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F58264264B0FC200D000C8 /* VaccineAvailabilityApp.swift */; };
 		80F58267264B0FC200D000C8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F58266264B0FC200D000C8 /* ContentView.swift */; };
 		80F58269264B0FC300D000C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80F58268264B0FC300D000C8 /* Assets.xcassets */; };
@@ -35,6 +36,7 @@
 		808E4D9B264D23B400C43244 /* SessionsParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionsParser.swift; sourceTree = "<group>"; };
 		808E4D9D264D244400C43244 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		808E4D9F264D38A100C43244 /* MainAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppView.swift; sourceTree = "<group>"; };
+		8097F01026553B0600490B9A /* screenshot.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = screenshot.jpg; path = ../../Desktop/screenshot.jpg; sourceTree = "<group>"; };
 		80F58261264B0FC200D000C8 /* VaccineAvailability.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VaccineAvailability.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80F58264264B0FC200D000C8 /* VaccineAvailabilityApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaccineAvailabilityApp.swift; sourceTree = "<group>"; };
 		80F58266264B0FC200D000C8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 				80F58277264B1B9400D000C8 /* .gitignore */,
 				80624D66264D97DD00B034A5 /* CONTRIBUTING.md */,
 				80624D68264D980F00B034A5 /* Readme.md */,
+				8097F01026553B0600490B9A /* screenshot.jpg */,
 				97D9005EEAD63A49691B3584 /* Pods */,
 				1A6E657C56BC64DF5400B1B2 /* Frameworks */,
 			);
@@ -190,6 +193,7 @@
 				80624D69264D980F00B034A5 /* Readme.md in Resources */,
 				80F5826C264B0FC300D000C8 /* Preview Assets.xcassets in Resources */,
 				80F58278264B1B9400D000C8 /* .gitignore in Resources */,
+				8097F01126553B0600490B9A /* screenshot.jpg in Resources */,
 				80624D67264D97DD00B034A5 /* CONTRIBUTING.md in Resources */,
 				80624D63264D8F3400B034A5 /* LICENSE in Resources */,
 				80F58269264B0FC300D000C8 /* Assets.xcassets in Resources */,
